@@ -2,13 +2,12 @@
 ## Aim
 To Implement Transfer Learning for classification using VGG-19 architecture.
 ## Problem Statement and Dataset
-Include the problem statement and Dataset
 1. Develop a binary classification model using a pretrained VGG19 to distinguish between defected and non-defected capacitors by modifying the last layer to a single neuron.
 2. Train the model on a dataset containing images of various defected and non-defected capacitors to improve defect detection accuracy.
 3. Optimize and evaluate the model to ensure reliable classification for capacitor quality assessment in manufacturing.
 
 ## DESIGN STEPS
-<br/>### STEP 1:
+### STEP 1:
 Collect and preprocess the dataset containing images of defected and non-defected capacitors.
 
 ### STEP 2:
@@ -25,8 +24,8 @@ Train the model using binary cross-entropy loss function and Adam optimizer.
 
 ### STEP 6:
 Evaluate the model with test data loader and intepret the evaluation metrics such as confusion matrix and classification report.
+
 ## PROGRAM
-Include your code here
 ```python
 def show_sample_images(dataset, num_images=5):
     fig, axes = plt.subplots(1, num_images, figsize=(5, 5))
@@ -37,11 +36,13 @@ def show_sample_images(dataset, num_images=5):
         axes[i].set_title(dataset.classes[label])
         axes[i].axis("off")
     plt.show()
-
+```
+```python
 in_features=model.classifier[-1].in_features
 num_classes = len(train_dataset.classes)
 model.classifier[-1] = nn.Linear(in_features, 1)
-
+```
+```python
 def train_model(model, train_loader, test_loader, num_epochs=50):
     train_losses = []
     val_losses = []
@@ -75,7 +76,7 @@ def train_model(model, train_loader, test_loader, num_epochs=50):
         print(f'Epoch [{epoch+1}/{num_epochs}], Train Loss: {train_losses[-1]:.4f}, Validation Loss: {val_losses[-1]:.4f}')
 
     print("Name:THRIKESWAR P")
-    print("Register Number:212222230162")
+    print("Register Number:21222220162")
     plt.figure(figsize=(8, 6))
     plt.plot(range(1, num_epochs + 1), train_losses, label='Train Loss', marker='o')
     plt.plot(range(1, num_epochs + 1), val_losses, label='Validation Loss', marker='s')
@@ -84,10 +85,6 @@ def train_model(model, train_loader, test_loader, num_epochs=50):
     plt.title('Training and Validation Loss')
     plt.legend()
     plt.show()
-
-
-
-
 ```
 
 ## OUTPUT
@@ -104,4 +101,4 @@ def train_model(model, train_loader, test_loader, num_epochs=50):
 ![alt text](<Screenshot 2025-09-15 170245.png>)
 
 ## RESULT
-thus,The VGG-19 model was successfully trained and optimized to classify defected and non-defected capacitors.
+The VGG-19 model was successfully trained and optimized to classify defected and non-defected capacitors
